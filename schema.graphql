@@ -1,6 +1,8 @@
 type Query{
     getAuthors:[Author]!
     getSingleAuthor(id:ID):Author!
+    getSinglePost(id:ID): Post!
+    getPosts: [Post]!
 }
 
 type Mutation{
@@ -8,6 +10,9 @@ type Mutation{
     updateOneAuthor(id:ID!, data:AuthorInputUpdate!):Author!
     deleteOneAuthor(id:ID!):String!
     createNewPost(data:PostInput!):Post!
+    updateOnePost(id:ID!, data:PostInputUpdate!):Post!
+    deleteOnePost(id:ID!):String!
+
 }
 
 type Author{
@@ -44,7 +49,7 @@ type Post{
     _id:ID!
     title: String!
     content: String!
-    author: ID!
+    author: Author
     cover: String!
     liked_by: [Author]
     is_active: Boolean
@@ -55,6 +60,14 @@ input PostInput{
     content: String!
     author: ID
     cover: String
+    is_active: Boolean
+}
+
+input PostInputUpdate{
+    title: String!
+    content: String!
+    cover: String
+    llike_by: String!
     is_active: Boolean
 }
 

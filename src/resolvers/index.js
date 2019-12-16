@@ -3,7 +3,8 @@ const PostResolver = require('./PostResolvers');
 
 module.exports = {
     Query:{
-        ...AuthorResolver.Query
+        ...AuthorResolver.Query,
+        ...PostResolver.Query,
     },
     Mutation:{
         ...AuthorResolver.Mutation,
